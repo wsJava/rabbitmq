@@ -1,0 +1,53 @@
+spring:
+  rabbitmq:
+    addresses: 127.0.0.1:5672
+    username: guest
+    password: guest
+    virtual-host: /
+    connection-timeout: 15s
+#   开启消息确认模式, 异步等待消息响应结果
+    publisher-confirms: true
+    publisher-returns: true
+    template:
+      mandatory: true
+
+
+  http:
+    encoding:
+      charset: UTF-8
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+    default-property-inclusion: non_null
+
+  datasource:
+#    hikari:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      username: root
+      password: mysql_lv
+      url: jdbc:mysql://127.0.0.1:3306/rabbitmq?useSSL=false&useUnicode=true&characterEncoding=utf-8&serverTimezone=GMT%2B8
+#      minimum-idle: 2
+#      maximum-pool-size: 20
+#      connection-test-query: SELECT 1
+#      connection-timeout: 30000
+#      idle-timeout: 30000
+
+
+
+mybatis-plus:
+  mapper-locations: classpath*:mapper/*.xml
+  type-aliases-package: top.lvjp.rabbitmqmodel.entity
+  configuration:
+    # 枚举类的处理方式: 存储枚举类的索引,   (默认: EnumTypeHandler 存储枚举类的名称)
+    default-enum-type-handler: org.apache.ibatis.type.EnumOrdinalTypeHandler
+    map-underscore-to-camel-case: true
+  type-enums-package: top.lvjp.rabbitmqproducer.enums
+
+server:
+  servlet:
+    context-path: /
+  port: 8081
+logging:
+  level:
+    top.lvjp.rabbitmqproducer.mapper: trace
+

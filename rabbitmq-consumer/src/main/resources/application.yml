@@ -1,0 +1,26 @@
+# rabbitmq 基本配置
+spring:
+#  rabbitmq:
+#    addresses: 127.0.0.1:5672
+#    username: guest
+#    password: guest
+#    virtual-host: /
+#    connection-timeout: 15s
+#    listener:
+#      simple:
+##      最小并发数
+#        concurrency: 5
+##        最大并发数
+#        max-concurrency: 10
+##        手动签收
+#        acknowledge-mode: manual
+##        限流,
+#        prefetch: 1
+
+
+# rabbitmq 消费端配置
+
+server:
+  servlet:
+    context-path: /
+  port: 8082
